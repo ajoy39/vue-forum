@@ -1,6 +1,10 @@
 <template>
   <div class="col-large push-top">
     <h1>{{ thread.title }}</h1>
+    <p>
+      By <a href="#" class="link-unstyled">{{user.name}}</a>,
+      <AppDate :timestamp="thread.publishedAt" />.
+    </p>
     <PostList :posts="posts"/>
     <PostEditor
       :threadId="id"
@@ -38,6 +42,9 @@
         const postIds = Object.values(this.thread.posts)
         return Object.values(sourceData.posts)
           .filter(post => postIds.includes(post['.key']))
+      },
+      user () {
+        return sourceData.users[this.thread.userId]
       }
     },
 
