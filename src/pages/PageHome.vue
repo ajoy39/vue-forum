@@ -1,22 +1,22 @@
 <template>
 <div class="col-full">
   <h1>Welcome to the Forum</h1>
-  <ForumList :forums="forums" />
+  <CategoriesList :categories="categories" />
 </div>
 </template>
 
 <script>
 
 import sourceData from '@/data'
-import ForumList from '@/components/forums/ForumList'
+import CategoriesList from '@/components/categories/CategoriesList'
 
 export default {
   components: {
-    ForumList
+    CategoriesList
   },
   data () {
     return {
-      forums: Object.values(sourceData.forums)
+      categories: Object.values(sourceData.categories)
     }
   }
 }
