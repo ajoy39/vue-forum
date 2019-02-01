@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-  import ForumListItem from '@/components/ForumListItem'
+  import ForumListItem from '@/components/forums/ForumListItem'
   
   export default {
     components: {

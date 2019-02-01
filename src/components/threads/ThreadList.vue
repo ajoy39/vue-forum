@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-  import ThreadListItem from '@/components/ThreadListItem'
+  import ThreadListItem from '@/components/threads/ThreadListItem'
 
   export default {
     components: {

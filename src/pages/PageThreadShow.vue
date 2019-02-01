@@ -14,8 +14,8 @@
 </template>
 <script>
   import sourceData from '@/data'
-  import PostList from '@/components/PostList'
-  import PostEditor from '@/components/PostEditor'
+  import PostList from '@/components/posts/PostList'
+  import PostEditor from '@/components/posts/PostEditor'
   
   export default {
     components: {

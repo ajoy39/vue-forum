@@ -20,7 +20,7 @@
 
 <script>
   import sourceData from '@/data'
-  import ThreadList from '@/components/ThreadList'
+  import ThreadList from '@/components/threads/ThreadList'
 
   export default {
     components: {

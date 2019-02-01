@@ -8,7 +8,7 @@
 <script>
 
 import sourceData from '@/data'
-import ForumList from '@/components/ForumList'
+import ForumList from '@/components/forums/ForumList'
 
 export default {
   components: {
