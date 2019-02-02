@@ -13,7 +13,6 @@
   </div>
 </template>
 <script>
-  import sourceData from '@/data'
   import CategoriesListItem from '@/components/categories/CategoriesListItem.vue'
 
   export default {
@@ -28,7 +27,7 @@
     },
     computed: {
       category () {
-        return sourceData.categories[this.id]
+        return this.$store.state.categories[this.id]
       }
     }
   }
