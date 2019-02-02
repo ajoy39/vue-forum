@@ -1,7 +1,10 @@
 <template>
   <div class="forum-list">
     <h2 class="list-title">
-        {{category.name}}
+      <router-link 
+        :to="{name: 'Category', params: {id: category['.key']}}"
+        class="text-xlarge"
+      >{{category.name}}</router-link>
     </h2>
     <ForumList :forums="categoryForum" />
   </div>
