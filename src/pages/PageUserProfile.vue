@@ -1,21 +1,11 @@
 <template>
   <div class="flex-grid">
     <div class="col-3 push-top">
-      <div class="profile-card">
-        <p class="text-center">
-          <img :src="user.avatar" alt="" class="avatar-xlarge">
-        </p>
-        <h1 class="title">{{ user.username }}</h1>
-        <p class="text-lead">{{ user.name }}</p>
-        <p class="text-justify">
-         {{ user.bio ? user.bio : "No bio provided." }}
-        </p>
-        <div class="stats">
-          <span>{{userPostsCount}} posts</span>
-          <span>{{userThreadsCount}} threads</span>
-        </div>
-        <hr>
-      </div>
+      <UserProfileCardEditor
+        :user="user" 
+        :userPostsCount="userPostsCount"
+        :userThreadsCount="userThreadsCount" />
+      
       <p class="text-xsmall text-faded text-center">Member since <AppDate :timestamp="user.registeredAt" />, last active </p>
       <div class="text-center">
         <hr>
@@ -37,11 +27,13 @@
 <script>
   import {mapGetters} from 'vuex'
   import PostList from '@/components/posts/PostList'
+  import UserProfileCardEditor from '@/components/profile/UserProfileCardEditor'
   import {countObjectProperties} from '@/utils'
 
   export default {
     components: {
-      PostList
+      PostList,
+      UserProfileCardEditor
     },
 
     computed: {
@@ -49,17 +41,17 @@
         'user': 'authUser'
       }),
 
+      userPosts () {
+        return this.user.posts ? Object.values(this.$store.state.posts)
+          .filter(post => post.userId === this.user['.key']) : []
+      },
+
       userThreadsCount () {
         return countObjectProperties(this.user.threads)
       },
 
       userPostsCount () {
         return countObjectProperties(this.user.posts)
-      },
-
-      userPosts () {
-        return this.user.posts ? Object.values(this.$store.state.posts)
-          .filter(post => post.userId === this.user['.key']) : []
       }
     }
   }
