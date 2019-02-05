@@ -1,16 +1,19 @@
 <template>
   <div class="flex-grid">
     <div class="col-3 push-top">
+      <UserProfileCard 
+        v-if="!edit"
+        :user="user" 
+        :userPostsCount="userPostsCount"
+        :userThreadsCount="userThreadsCount" />
+
       <UserProfileCardEditor
+        v-else
         :user="user" 
         :userPostsCount="userPostsCount"
         :userThreadsCount="userThreadsCount" />
       
       <p class="text-xsmall text-faded text-center">Member since <AppDate :timestamp="user.registeredAt" />, last active </p>
-      <div class="text-center">
-        <hr>
-        <a href="edit-profile.html" class="btn-green btn-small">Edit Profile</a>
-      </div>
     </div>
     <div class="col-7 push-top">
       <div class="profile-header">
@@ -27,13 +30,22 @@
 <script>
   import {mapGetters} from 'vuex'
   import PostList from '@/components/posts/PostList'
+  import UserProfileCard from '@/components/profile/UserProfileCard'
   import UserProfileCardEditor from '@/components/profile/UserProfileCardEditor'
   import {countObjectProperties} from '@/utils'
 
   export default {
     components: {
       PostList,
+      UserProfileCard,
       UserProfileCardEditor
+    },
+
+    props: {
+      edit: {
+        type: Boolean,
+        default: false
+      }
     },
 
     computed: {
