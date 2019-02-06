@@ -5,6 +5,7 @@ import ThreadShow from '@/pages/PageThreadShow'
 import Forum from '@/pages/PageForum'
 import Category from '@/pages/PageCategory'
 import Profile from '@/pages/PageUserProfile'
+import ThreadCreate from '@/pages/PageThreadCreate'
 
 Vue.use(Router)
 
@@ -14,6 +15,12 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: PageHome
+    },
+    {
+      path: '/thread/create/:id',
+      name: 'ThreadCreate',
+      component: ThreadCreate,
+      props: true
     },
     {
       path: '/thread/:id',

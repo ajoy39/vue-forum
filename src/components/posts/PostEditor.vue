@@ -3,7 +3,7 @@
     <div class="form-group">
       <textarea 
         class="form-input" name="" id="" cols="30" rows="10" 
-        v-model="postText">
+        v-model="text">
 
       </textarea>
     </div>
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
-
   export default {
     props: {
       threadId: {
@@ -26,23 +24,21 @@
 
     data () {
       return {
-        postText: ''
+        text: ''
       }
     },
 
     computed: {
-      ...mapGetters({
-        'user': 'authUser'
-      })
+      thread () {
+        return this.$store.state.threads[this.id]
+      }
     },
 
     methods: {
       save () {
         const post = {
-          text: this.postText,
-          publishedAt: Math.floor(Date.now() / 1000),
-          threadId: this.threadId,
-          userId: this.user['.key']
+          text: this.text,
+          threadId: this.threadId
         }
 
         this.postText = ''
